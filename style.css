@@ -1208,6 +1208,9 @@ main {
     .sobre {
         padding: 48px 24px;
     }
+    .sobre h2{
+        padding: 48px 24px;
+    }
 
     .sobre-conteudo {
         grid-template-columns: 1fr;
