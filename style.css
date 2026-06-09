@@ -975,7 +975,7 @@ main {
 .parceiros {
     background-color: var(--cor-creme);
     max-width: 100%;
-    padding: 60px 48px 100px;
+    padding: 60px 48px;
     text-align: center;
 }
 
@@ -999,8 +999,8 @@ main {
 }
 
 .parceiros-banner-wrap {
-    width: 100%;
-    max-width: 600px;
+    width: 600px;
+    max-width: 100%;
     transition: transform var(--transition), opacity var(--transition);
 }
 
@@ -1367,6 +1367,7 @@ main {
     }
 
     .parceiros-banner-wrap {
+        width: 100%;
         max-width: 100%;
     }
 
