@@ -469,6 +469,11 @@ main {
     flex-wrap: wrap;
 }
 
+/* 1. Ajuste na seção de Patrocinadores (inferior) */
+.patrocinadores-grid .patrocinador-item:nth-child(3) {
+    max-width: 260px; /* Aumentado de 180px para 260px para dar o peso visual correto */
+}
+
 .cta-secundario {
     font-family: var(--fonte-ui);
     font-size: 0.78rem;
@@ -500,6 +505,42 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
+}
+
+/* Grid de Patrocinadores no Topo da Home (Desktop) */
+.home-patrocinadores-grid {
+    display: grid;
+    /* Antes: repeat(3, 1fr) -> Agora: tamanhos sob medida para cada logo */
+    grid-template-columns: 70px 85px 140px; 
+    gap: 20px; 
+    align-items: center;
+    justify-content: start; 
+    width: 100%;
+    max-width: 360px; /* Aumentamos um pouquinho a largura máxima para o terceiro esticar */
+    margin-bottom: 8px;
+}
+
+.home-patrocinador-item {
+    width: 100%;
+    max-width: 80px; /* Logos menores para o topo do site */
+    opacity: 0.85;
+    transition: opacity var(--transition), transform var(--transition);
+}
+
+.home-patrocinadores-grid .home-patrocinador-item:nth-child(3) {
+    max-width: 140px; /* Abre espaço para o Ministério esticar na Home */
+}
+
+.home-patrocinador-item:hover {
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+.img-home-patrocinador {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
     display: block;
 }
 
@@ -536,7 +577,6 @@ main {
 }
 
 .sobre-texto h2 {
-    font-size: 2.8rem;
     margin: 0;
 }
 
@@ -578,7 +618,7 @@ main {
 
 .grandeza-eyebrow {
     font-family: var(--fonte-display);
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--cor-verde);
     margin-bottom: 8px;
@@ -667,7 +707,7 @@ main {
 
 .programacao-eyebrow {
     font-family: var(--fonte-ui);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -676,7 +716,7 @@ main {
 
 .programacao-titulo {
     font-family: var(--fonte-display);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--cor-verde);
     line-height: 1.2;
@@ -786,7 +826,7 @@ main {
 
 .momentos-eyebrow {
     font-family: var(--fonte-display);
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--cor-verde);
 }
@@ -890,7 +930,6 @@ main {
 }
 
 .localizacao-texto h2 {
-    font-size: 2.8rem;
     margin-bottom: 28px;
 }
 
@@ -972,6 +1011,39 @@ main {
 
 /* Parceiros */
 
+/* Grid de Patrocinadores (Desktop) */
+.patrocinadores-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px; /* Espaço entre os logos */
+    align-items: center; /* Centraliza verticalmente se um logo for mais alto que o outro */
+    justify-items: center; /* Centraliza horizontalmente na coluna */
+    width: 100%;
+    max-width: 900px; /* Limita a largura máxima do conjunto para ficar elegante e centralizado */
+    margin: 0 auto;
+}
+
+.patrocinador-item {
+    width: 100%;
+    max-width: 140px; /* Garante que os logos individuais tenham um tamanho controlado */
+    transition: transform var(--transition);
+}
+
+.patrocinador-item:hover {
+    transform: scale(1.05); /* Efeito sutil de hover igual ao restante do site */
+}
+
+.patrocinadores-grid .patrocinador-item:nth-child(3) {
+    max-width: 240px; 
+}
+
+.img-patrocinador {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Garante que o logo não seja distorcido */
+    display: block;
+}
+
 .parceiros {
     background-color: var(--cor-creme);
     max-width: 100%;
@@ -985,34 +1057,73 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 32px;
+    gap: 8px;
 }
 
-.parceiros-eyebrow {
-    font-family: var(--fonte-ui);
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--cor-texto-leve);
-    opacity: 0.8;
-}
+/* CARROSSEL INFINITO DE PARCEIROS (CSS TICKER) */
 
-.parceiros-banner-wrap {
-    width: 600px;
-    max-width: 100%;
-    transition: transform var(--transition), opacity var(--transition);
-}
-
-.img-parceiros-final {
+.parceiros-carrossel-container {
     width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
+    max-width: 1200px;
+    overflow: hidden; /* Esconde os logos que saem da tela */
+    position: relative;
+    padding: 20px 0;
+    margin-top: 24px;
 }
 
-.parceiros-banner-wrap:hover {
-    transform: scale(1.01);
+/* Sombra suave nas laterais para dar profundidade ao carrossel */
+.parceiros-carrossel-container::before,
+.parceiros-carrossel-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* A esteira que segura e move os logos continuamente */
+.parceiros-carrossel-track {
+    display: flex;
+    width: max-content;
+    animation: deslizarInfinito 25s linear infinite; /* 25 segundos para uma transição suave */
+}
+
+/* Pausa o movimento quando o usuário põe o mouse em cima */
+.parceiros-carrossel-track:hover {
+    animation-play-state: paused;
+}
+
+/* Cada bloco de logos individuais */
+.parceiros-grupo {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 45px; /* Distância confortável entre cada logo */
+    padding-right: 80px; /* Mantém o mesmo espaço na emenda do loop */
+}
+
+/* Padronização dos logos dentro do carrossel */
+.parceiros-grupo img {
+    height: 60px; /* Define uma altura harmônica para todas as marcas */
+    width: auto;
+    object-fit: contain;
+    transition: filter var(--transition), transform var(--transition);
+}
+
+.parceiros-grupo img:hover {
+    transform: scale(1.05);
+}
+
+/* Animação que desloca a esteira até a metade (onde começa a cópia) e reseta sem piscar */
+@keyframes deslizarInfinito {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 /* Chamada Final */
@@ -1149,6 +1260,9 @@ main {
         height: 70px;
         padding: 0 16px;
     }
+    section h2 {
+        font-size: 2rem; 
+    }
 
     .header-cta {
         font-size: 0.7rem;
@@ -1199,17 +1313,41 @@ main {
         font-size: 2.4rem;
     }
 
-    .home-banner-patrocinios {
-    max-width: 260px;
-}
+    .home-patrocinadores-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr 2.2fr; /* Pesos sob medida para o mobile */
+        justify-content: center; 
+        align-items: center;
+        margin: 0 auto;          
+        max-width: 280px; /* Expandido ligeiramente para dar folga ao trio */
+        gap: 12px;
+    }
+
+    /* Alvo direto na caixinha do Ministério no topo da Home (Mobile) */
+    .home-patrocinadores-grid .home-patrocinador-item:nth-child(3) {
+        max-width: 130px; 
+    }
 
     /* Sobre */
 
     .sobre {
-        padding: 48px 24px;
+        padding: 40px 24px;
     }
     .sobre h2{
-        padding: 48px 24px;
+        padding: 0;
+        margin-top: 8px; /* Margem sutil para afastar levemente do "SERTÃO CHIC" */
+        margin-bottom: 16px; /* Espaço controlado antes de começar o parágrafo */
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .sobre-conteudo {
+        grid-template-columns: 1fr;
+        gap: 24px; /* Reduzido o vão entre o bloco de texto e a imagem de baixo */
+    }
+
+    .sobre-texto {
+        gap: 12px; /* Deixa os parágrafos mais unidos e fáceis de ler no celular */
     }
 
     .sobre-conteudo {
@@ -1341,7 +1479,6 @@ main {
     }
 
     .localizacao-texto h2 {
-        font-size: 2rem;
         margin-bottom: 16px;
     }
 
@@ -1361,6 +1498,24 @@ main {
     }
 
     /* Parceiros */
+
+    .patrocinadores-grid {
+        grid-template-columns: 1fr 1fr 1.5fr; /* Abre mais espaço para o Ministério na direita */
+        gap: 20px; /* Reduz o espaço para caber tudo perfeitamente em telas estreitas */
+        align-items: center;
+        justify-items: center;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .patrocinador-item {
+        max-width: 90px; /* Diminui Caixa e Banco no mobile para não esmagar a tela */
+    }
+
+    /* Permite que o Ministério ocupe o espaço extra que demos a ele no grid mobile */
+    .patrocinadores-grid .patrocinador-item:nth-child(3) {
+        max-width: 150px; 
+    }
 
     .parceiros {
         padding: 48px 24px 64px;
