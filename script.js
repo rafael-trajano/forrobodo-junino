@@ -1,4 +1,4 @@
-// FORROBODÓ JUNINO — script.js
+// FORROBODÓ JUNINO — script.js 
 
 (function () {
     'use strict';
