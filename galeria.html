@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+    <meta charset="UTF-8">
+    <title>Galeria | Forrobodó Junino 2026</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galeria de fotos do Forrobodó Junino 2026 — Momentos inesquecíveis no Engenho Afetuosa, Lagoa Seca - PB.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="imagens/imagem-logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="galeria.css">
+    <script src="script.js" defer></script>
+    <script src="galeria.js" defer></script>
+</head>
+
+<body>
+
+<header class="header">
+    <a href="index.html" class="header-logo-link">
+        <img src="imagens/imagem-logo.webp" alt="Forrobodó Junino" class="logo-oficial header-logo">
+    </a>
+    <div class="header-acoes">
+        <a href="https://zig.tickets/eventos/forrobodo-junino-1306" target="_blank" rel="noopener noreferrer" class="header-cta">INGRESSOS</a>
+        <button class="menu-hamburguer"
+            aria-label="Abrir menu de navegação"
+            aria-expanded="false">
+            <span class="hamburguer-linha"></span>
+            <span class="hamburguer-linha"></span>
+            <span class="hamburguer-linha"></span>
+        </button>
+    </div>
+</header>
+
+<nav class="nav" aria-label="Menu principal">
+    <div class="nav-header">
+        <img src="imagens/imagem-logo.webp" alt="Forrobodó Junino" class="logo-oficial nav-logo">
+        <button class="menu-fechar" aria-label="Fechar menu">✕</button>
+    </div>
+    <ul>
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#sobre">O Evento</a></li>
+        <li><a href="index.html#grandeza">Experiências</a></li>
+        <li><a href="index.html#programacao">Programação</a></li>
+        <li><a href="index.html#momentos">Momentos</a></li>
+        <li><a href="index.html#localizacao">Localização</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+    </ul>
+    <div class="nav-cta">
+        <a href="https://zig.tickets/eventos/forrobodo-junino-1306" target="_blank" rel="noopener noreferrer" class="cta">GARANTIR MEU INGRESSO</a>
+    </div>
+</nav>
+
+<div class="menu-overlay" aria-hidden="true"></div>
+
+<main class="galeria-main" aria-label="Galeria de fotos">
+    <h1 class="visualmente-oculto">Galeria de fotos — Forrobodó Junino 2026</h1>
+
+    <div class="galeria-selector-wrap">
+        <div class="galeria-selector-inner">
+            <span class="galeria-selector-label">Selecionar dia</span>
+            <select class="galeria-select" id="galeria-select" aria-label="Selecionar dia da galeria"></select>
+            <div class="galeria-nav-btns">
+                <button class="galeria-nav-btn" id="btn-anterior" aria-label="Dia anterior">‹</button>
+                <button class="galeria-nav-btn" id="btn-proximo"  aria-label="Próximo dia">›</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="galeria-conteudo" id="galeria-conteudo"></div>
+
+</main>
+
+<footer class="footer">
+    <div class="footer-logo-wrap">
+        <img src="imagens/imagem-logo.webp" alt="Forrobodó Junino" class="logo-oficial footer-logo">
+    </div>
+    <div class="footer-info">
+        <p>© 2026 Forrobodó Junino — Todos os direitos reservados</p>
+        <p>E-mail: <a href="mailto:forrobodojunino@gmail.com">forrobodojunino@gmail.com</a></p>
+        <p>Tel: <a href="https://wa.me/558399048000" target="_blank" rel="noopener noreferrer" aria-label="Contato via WhatsApp: 55 (83) 9904-8000">(83) 99048000</a></p>
+    </div>
+    <div class="footer-local">
+        <p>Lagoa Seca, PB</p>
+    </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizar foto">
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Foto anterior">‹</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Próxima foto">›</button>
+    <span class="lightbox-contador" id="lightbox-contador"></span>
+</div>
+
+</body>
+</html>
