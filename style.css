@@ -1291,16 +1291,13 @@ main {
     .home-ctas {
         gap: 12px;
         flex-wrap: nowrap;
+        
     }
 
     .home-ctas .cta {
-    padding: 12px 16px;
+    padding: 12px 24px;
+    font-size: 0.75rem;
 }
-
-    .cta,
-    .cta-secundario {
-        font-size: 0.65rem;
-    }
 
     .home-direita {
         order: 2;
