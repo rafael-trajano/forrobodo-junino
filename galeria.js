@@ -17,6 +17,9 @@
         { id: 'dia01', titulo: 'Dia 05/06', fotos: 12 },
         { id: 'dia02', titulo: 'Dia 06/06', fotos: 10 },
         { id: 'dia03', titulo: 'Dia 07/06', fotos: 12 },
+        { id: 'dia04', titulo: 'Dia 12/06', fotos: 10 },
+        { id: 'dia05', titulo: 'Dia 13/06', fotos: 20 },
+        { id: 'dia06', titulo: 'Dia 14/06', fotos: 10 },
     ];
 
     var select   = document.getElementById('galeria-select');
