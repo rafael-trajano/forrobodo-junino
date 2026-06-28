@@ -490,27 +490,25 @@ main {
 
 .home-direita {
     width: 100%;
-    padding-right: 48px;
+    display: flex;
+    align-items: center;
 }
 
 .home-foto-container {
     width: 100%;
-    height: 100%;
-    min-height: 500px;
+    aspect-ratio: 16 / 10;
+    margin: 40px 48px 40px 0;
+    background-color: var(--cor-escuro);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    padding: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    box-shadow: 0 24px 70px rgba(44, 31, 14, 0.15);
 }
 
 .home-foto-container img {
     width: 100%;
-    height: auto;
-    max-height: 70vh;
+    height: 100%;
     object-fit: cover;
-    border-radius: var(--radius-global);
-    box-shadow: none;
+    display: block;
 }
 
 /* Grid de Patrocinadores no Topo da Home (Desktop) */
@@ -1305,9 +1303,28 @@ main {
 }
 
     .home-direita {
-        order: 2;
-        padding: 0 24px 40px;
+    order: 2;
+    width: 100%;
+    padding: 0 24px 40px;
+    display: flex;
+    justify-content: center;
+    }  
+    
+    .home-foto-container {
+    width: 100%;
+    max-width: 520px;
+    aspect-ratio: 16 / 10;
+    margin: 0 auto;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 24px 70px rgba(44, 31, 14, 0.15);
     }
+
+.home-foto-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
     .home-titulo {
         font-size: 2.4rem;
