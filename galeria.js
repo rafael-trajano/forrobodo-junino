@@ -25,6 +25,7 @@
         { id: 'dia09', titulo: 'Dia 21/06', fotos: 18 },
         { id: 'dia10', titulo: 'Dia 22/06', fotos: 16 },
         { id: 'dia11', titulo: 'Dia 23/06', fotos: 8 },
+        { id: 'dia12', titulo: 'Dia 24/06', fotos: 8 },
     ];
 
     var select   = document.getElementById('galeria-select');
