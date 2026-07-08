@@ -287,7 +287,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 6px;
     padding: 8px;
     transition: transform 0.2s ease;
 }
@@ -298,7 +298,7 @@ main {
 
 .hamburguer-linha {
     display: block;
-    width: 22px;
+    width: 26px;
     height: 2px;
     background-color: var(--cor-verde);
     border-radius: 2px;
@@ -308,7 +308,7 @@ main {
 .menu-fechar {
     background: none;
     border: none;
-    font-size: 1.1rem;
+    font-size: 1.35rem;
     cursor: pointer;
     color: var(--cor-texto-leve);
     width: 36px;
@@ -469,9 +469,8 @@ main {
     flex-wrap: wrap;
 }
 
-/* 1. Ajuste na seção de Patrocinadores (inferior) */
 .patrocinadores-grid .patrocinador-item:nth-child(3) {
-    max-width: 260px; /* Aumentado de 180px para 260px para dar o peso visual correto */
+    max-width: 260px; 
 }
 
 .cta-secundario {
@@ -557,7 +556,7 @@ main {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 1.05fr 0.95fr;
     gap: 80px;
     align-items: center;
 }
@@ -594,11 +593,11 @@ main {
 
 .sobre-foto {
     width: 100%;
-    aspect-ratio: 2 / 3;
-    max-height: 480px;
+    aspect-ratio: 1000 / 667;
+    max-height: 600px;
     object-fit: cover;
     object-position: center top;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     display: block;
     box-shadow: var(--shadow-md);
 }
@@ -1154,38 +1153,11 @@ main {
 
 .chamada-final-conteudo p {
     font-size: 1.05rem;
-    font-style: italic;
     font-weight: 300;
-    color: rgba(252, 249, 240, 0.75);
+    color: var(--cor-branca);
     max-width: 620px;
     margin-bottom: 40px;
     line-height: 1.6;
-}
-
-.chamada-final-ctas {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.cta-principal-verde {
-    display: inline-block;
-    padding: 18px 48px;
-    background-color: var(--cor-marrom);
-    color: var(--cor-branca);
-    border-radius: var(--radius-sm);
-    font-family: var(--fonte-ui);
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: background-color var(--transition), transform var(--transition);
-}
-
-.cta-principal-verde:hover {
-    background-color: var(--cor-marrom-hover);
-    transform: translateY(-2px);
 }
 
 /* 8. ANIMAÇÕES */
@@ -1539,11 +1511,6 @@ main {
     }
     .chamada-final-conteudo p {
         font-size: 0.9rem;
-    }
-
-    .cta-principal-verde {
-        width: 90%;
-        text-align: center;
     }
 
     .footer {
