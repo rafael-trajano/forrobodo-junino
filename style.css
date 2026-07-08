@@ -410,7 +410,7 @@ main {
 
 /* 7. SECTIONS */
 
-/* Home / Hero */
+/* Home */
 
 .home {
     max-width: 100%;
@@ -511,28 +511,26 @@ main {
     display: block;
 }
 
-/* Grid de Patrocinadores no Topo da Home (Desktop) */
 .home-patrocinadores-grid {
     display: grid;
-    /* Antes: repeat(3, 1fr) -> Agora: tamanhos sob medida para cada logo */
     grid-template-columns: 70px 85px 140px; 
     gap: 20px; 
     align-items: center;
     justify-content: start; 
     width: 100%;
-    max-width: 360px; /* Aumentamos um pouquinho a largura máxima para o terceiro esticar */
+    max-width: 360px; 
     margin-bottom: 8px;
 }
 
 .home-patrocinador-item {
     width: 100%;
-    max-width: 80px; /* Logos menores para o topo do site */
+    max-width: 80px; 
     opacity: 0.85;
     transition: opacity var(--transition), transform var(--transition);
 }
 
 .home-patrocinadores-grid .home-patrocinador-item:nth-child(3) {
-    max-width: 140px; /* Abre espaço para o Ministério esticar na Home */
+    max-width: 140px; 
 }
 
 .home-patrocinador-item:hover {
@@ -1014,26 +1012,25 @@ main {
 
 /* Parceiros */
 
-/* Grid de Patrocinadores (Desktop) */
 .patrocinadores-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px; /* Espaço entre os logos */
-    align-items: center; /* Centraliza verticalmente se um logo for mais alto que o outro */
-    justify-items: center; /* Centraliza horizontalmente na coluna */
+    gap: 40px; 
+    align-items: center; 
+    justify-items: center; 
     width: 100%;
-    max-width: 900px; /* Limita a largura máxima do conjunto para ficar elegante e centralizado */
+    max-width: 900px; 
     margin: 0 auto;
 }
 
 .patrocinador-item {
     width: 100%;
-    max-width: 140px; /* Garante que os logos individuais tenham um tamanho controlado */
+    max-width: 140px; 
     transition: transform var(--transition);
 }
 
 .patrocinador-item:hover {
-    transform: scale(1.05); /* Efeito sutil de hover igual ao restante do site */
+    transform: scale(1.05); 
 }
 
 .patrocinadores-grid .patrocinador-item:nth-child(3) {
@@ -1043,7 +1040,7 @@ main {
 .img-patrocinador {
     width: 100%;
     height: auto;
-    object-fit: contain; /* Garante que o logo não seja distorcido */
+    object-fit: contain; 
     display: block;
 }
 
@@ -1063,18 +1060,17 @@ main {
     gap: 8px;
 }
 
-/* CARROSSEL INFINITO DE PARCEIROS (CSS TICKER) */
+/* CARROSSEL INFINITO DE PARCEIROS */
 
 .parceiros-carrossel-container {
     width: 100%;
     max-width: 1200px;
-    overflow: hidden; /* Esconde os logos que saem da tela */
+    overflow: hidden; 
     position: relative;
     padding: 20px 0;
     margin-top: 24px;
 }
 
-/* Sombra suave nas laterais para dar profundidade ao carrossel */
 .parceiros-carrossel-container::before,
 .parceiros-carrossel-container::after {
     content: "";
@@ -1086,30 +1082,26 @@ main {
     pointer-events: none;
 }
 
-/* A esteira que segura e move os logos continuamente */
 .parceiros-carrossel-track {
     display: flex;
     width: max-content;
     animation: deslizarInfinito 25s linear infinite; /* 25 segundos para uma transição suave */
 }
 
-/* Pausa o movimento quando o usuário põe o mouse em cima */
 .parceiros-carrossel-track:hover {
     animation-play-state: paused;
 }
 
-/* Cada bloco de logos individuais */
 .parceiros-grupo {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    gap: 45px; /* Distância confortável entre cada logo */
-    padding-right: 80px; /* Mantém o mesmo espaço na emenda do loop */
+    gap: 45px; 
+    padding-right: 80px; 
 }
 
-/* Padronização dos logos dentro do carrossel */
 .parceiros-grupo img {
-    height: 60px; /* Define uma altura harmônica para todas as marcas */
+    height: 60px; 
     width: auto;
     object-fit: contain;
     transition: filter var(--transition), transform var(--transition);
@@ -1119,7 +1111,6 @@ main {
     transform: scale(1.05);
 }
 
-/* Animação que desloca a esteira até a metade (onde começa a cópia) e reseta sem piscar */
 @keyframes deslizarInfinito {
     0% {
         transform: translateX(0);
@@ -1222,7 +1213,6 @@ main {
 .programacao-lista .programacao-item:nth-child(1) { transition-delay: 0s; }
 .programacao-lista .programacao-item:nth-child(2) { transition-delay: 0.15s; }
 
-/* Respeito à preferência do sistema por menos movimento */
 @media (prefers-reduced-motion: reduce) {
     .animar {
         opacity: 1;
@@ -1332,15 +1322,14 @@ main {
 
     .home-patrocinadores-grid {
         display: grid;
-        grid-template-columns: 1fr 1.2fr 2.2fr; /* Pesos sob medida para o mobile */
+        grid-template-columns: 1fr 1.2fr 2.2fr; 
         justify-content: center; 
         align-items: center;
         margin: 0 auto;          
-        max-width: 280px; /* Expandido ligeiramente para dar folga ao trio */
+        max-width: 280px; 
         gap: 12px;
     }
 
-    /* Alvo direto na caixinha do Ministério no topo da Home (Mobile) */
     .home-patrocinadores-grid .home-patrocinador-item:nth-child(3) {
         max-width: 130px; 
     }
@@ -1352,14 +1341,14 @@ main {
     }
     .sobre h2{
         padding: 0;
-        margin-top: 8px; /* Margem sutil para afastar levemente do "SERTÃO CHIC" */
-        margin-bottom: 16px; /* Espaço controlado antes de começar o parágrafo */
+        margin-top: 8px; 
+        margin-bottom: 16px; 
         font-size: 2rem;
         line-height: 1.2;
     }
 
     .sobre-texto {
-        gap: 12px; /* Deixa os parágrafos mais unidos e fáceis de ler no celular */
+        gap: 12px; 
     }
 
     .sobre-conteudo {
@@ -1379,14 +1368,14 @@ main {
 
     .grandeza-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 16px; /* Dá um espaçamento elegante entre os cards */
+        gap: 16px; 
     }
 
     .grandeza-item {
         width: 100%;
         height: auto;
-        aspect-ratio: 1792 / 2388; /* Mesma proporção vertical de "Momentos Iluminados" */
-        border-radius: var(--radius-lg); /* Mesmo arredondamento de 20px */
+        aspect-ratio: 1792 / 2388; 
+        border-radius: var(--radius-lg); 
         overflow: hidden;
     }
 
@@ -1399,7 +1388,7 @@ main {
     .grandeza-item img {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* Recorta e preenche de forma idêntica à galeria */
+        object-fit: cover; 
     }
 
     /* Programação */
@@ -1516,8 +1505,8 @@ main {
     /* Parceiros */
 
     .patrocinadores-grid {
-        grid-template-columns: 1fr 1fr 1.5fr; /* Abre mais espaço para o Ministério na direita */
-        gap: 20px; /* Reduz o espaço para caber tudo perfeitamente em telas estreitas */
+        grid-template-columns: 1fr 1fr 1.5fr; 
+        gap: 20px; 
         align-items: center;
         justify-items: center;
         width: 100%;
@@ -1525,10 +1514,9 @@ main {
     }
     
     .patrocinador-item {
-        max-width: 90px; /* Diminui Caixa e Banco no mobile para não esmagar a tela */
+        max-width: 90px; 
     }
 
-    /* Permite que o Ministério ocupe o espaço extra que demos a ele no grid mobile */
     .patrocinadores-grid .patrocinador-item:nth-child(3) {
         max-width: 150px; 
     }
@@ -1541,8 +1529,6 @@ main {
         width: 100%;
         max-width: 100%;
     }
-
-    /* Chamada Final */
 
     .chamada-final {
         padding: 60px 24px;
@@ -1559,23 +1545,16 @@ main {
         width: 90%;
         text-align: center;
     }
-    /* Footer mobile — empilhado e centralizado */
-.footer {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    text-align: center;
-    gap: 24px;
-    padding: 48px 24px;
-}
 
-.footer-local {
-    text-align: center;
-}
-}
+    .footer {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        gap: 24px;
+        padding: 48px 24px;
+    }
 
-@media (max-width: 480px) {
-    .grandeza-grid {
-        grid-template-columns: repeat(2, 1fr); /* Mantém 2 colunas organizadas e simétricas */
-        gap: 12px;
+    .footer-local {
+        text-align: center;
     }
 }
