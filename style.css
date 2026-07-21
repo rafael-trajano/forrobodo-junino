@@ -182,7 +182,7 @@ main {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    padding: 32px 48px;
+    padding: 48px;
     background-color: var(--cor-dark-footer);
     color: var(--cor-branca);
 }
@@ -205,7 +205,7 @@ main {
 }
 
 .footer-info a:hover {
-    color: var(--cor-dourado-claro);
+    color: var(--cor-marrom);
 }
 
 .footer-local {
@@ -213,6 +213,22 @@ main {
     font-size: 0.82rem;
     color: rgba(255, 255, 255, 0.5);
     letter-spacing: 0.05em;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 14px;
+}
+.footer-social .icone {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color var(--transition), transform var(--transition);
+}
+.footer-social a:hover .icone {
+    color: var(--cor-marrom);
+    transform: translateY(-2px);
 }
 
 /* 6. COMPONENTES */
@@ -235,6 +251,35 @@ main {
     transform: scale(1.03);
 }
 
+.icone {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+}
+.icone-whatsapp  { 
+    -webkit-mask-image: url("contato/whatsapp.svg");  mask-image: url("contato/whatsapp.svg"); 
+}
+.icone-envelope  { 
+    -webkit-mask-image: url("contato/envelope.svg");  mask-image: url("contato/envelope.svg"); 
+}
+.icone-instagram { 
+    -webkit-mask-image: url("contato/instagram.svg"); mask-image: url("contato/instagram.svg"); 
+}
+.icone-youtube { 
+    -webkit-mask-image: url("contato/youtube.svg");   mask-image: url("contato/youtube.svg"); 
+}
+.icone-tiktok    { 
+    -webkit-mask-image: url("contato/tiktok.svg");    mask-image: url("contato/tiktok.svg"); 
+}
+
 .nav-logo {
     width: 110px;
     max-height: 52px;
@@ -242,8 +287,8 @@ main {
 }
 
 .footer-logo {
-    width: 120px;
-    max-height: 60px;
+    width: 150px;
+    max-height: 75px;
     display: block;
     opacity: 0.9;
     transition: opacity var(--transition);
@@ -308,11 +353,11 @@ main {
 .menu-fechar {
     background: none;
     border: none;
-    font-size: 1.35rem;
+    font-size: 1.4rem;
     cursor: pointer;
-    color: var(--cor-texto-leve);
-    width: 36px;
-    height: 36px;
+    color: var(--cor-marrom);
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -321,8 +366,7 @@ main {
 }
 
 .menu-fechar:hover {
-    background-color: var(--cor-creme-escuro);
-    color: var(--cor-marrom);
+    color: var(--cor-marrom-hover);
 }
 
 /* Overlay */
@@ -396,18 +440,23 @@ main {
     padding-left: 28px;
 }
 
-.nav-cta {
-    padding: 20px 20px 32px;
+.nav-social {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    padding: 24px 20px 32px;
     margin-top: auto;
     flex-shrink: 0;
-    background-color: var(--cor-creme);
 }
-
-.nav-cta .cta {
-    width: 100%;
-    font-size: 0.8rem;
+.nav-social .icone {
+    font-size: 1.4rem;
+    color: var(--cor-marrom);
+    transition: color var(--transition), transform var(--transition);
 }
-
+.nav-social a:hover .icone {
+    color: var(--cor-marrom-hover);
+    transform: translateY(-3px);
+}
 /* 7. SECTIONS */
 
 /* Home */
@@ -755,6 +804,7 @@ main {
     font-weight: 700;
     color: var(--cor-verde);
     line-height: 1;
+    margin-bottom: 16px;
 }
 
 .prog-mes {
@@ -851,6 +901,7 @@ main {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 24px;
+    grid-template-rows: repeat(2, clamp(280px, 34vw, 420px));
 }
 
 .momentos-item {
@@ -858,7 +909,6 @@ main {
     overflow: hidden;
     box-shadow: var(--shadow-sm);
     transition: transform var(--transition);
-    height: 100%;
 }
 
 .momentos-item img {
@@ -876,25 +926,21 @@ main {
 .momentos-item:nth-child(1) {
     grid-column: 1 / span 8;
     grid-row: 1;
-    aspect-ratio: 16 / 10;
 }
 
 .momentos-item:nth-child(2) {
     grid-column: 9 / span 4;
     grid-row: 1;
-    aspect-ratio: 1792 / 2388;
 }
 
 .momentos-item:nth-child(3) {
     grid-column: 1 / span 4;
     grid-row: 2;
-    aspect-ratio: 1792 / 2388;
 }
 
 .momentos-item:nth-child(4) {
     grid-column: 5 / span 8;
     grid-row: 2;
-    aspect-ratio: 16 / 10;
 }
 
 /* Localização */
@@ -1119,7 +1165,7 @@ main {
     }
 }
 
-/* Chamada Final */
+/* Chamada Final
 
 .chamada-final {
     position: relative;
@@ -1159,6 +1205,7 @@ main {
     margin-bottom: 40px;
     line-height: 1.6;
 }
+*/
 
 /* 8. ANIMAÇÕES */
 
@@ -1279,13 +1326,13 @@ main {
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: 0 24px 70px rgba(44, 31, 14, 0.15);
-}
+    }
 
-.home-foto-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+    .home-foto-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
     .home-titulo {
         font-size: 2.3rem;
