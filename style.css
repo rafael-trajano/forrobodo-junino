@@ -65,7 +65,7 @@ ARQUITETURA CSS — FORROBODÓ JUNINO
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 0px;
+    scroll-padding-top: 0px; 
 }
 
 body {
@@ -1265,11 +1265,15 @@ main {
     .localizacao          { padding: 80px 40px; }
     .localizacao-conteudo { gap: 48px; }
     .localizacao-texto h2 { font-size: 2.4rem; }
+
+    .nav-social{
+        border-top: 1px solid var(--cor-creme-escuro);
+    }
 }
 
 @media (max-width: 768px) {
     .header {
-        height: 70px;
+        height: 80px;
         padding: 0 16px;
     }
     section h2 {
