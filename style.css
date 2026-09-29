@@ -173,7 +173,7 @@ img {
 /* Main */
 
 main {
-    margin-top: 64px;
+    margin-top: 80px;
 }
 
 /* Footer */
@@ -462,13 +462,18 @@ main {
 /* Home */
 
 .home {
-    max-width: 100%;
-    padding: 0;
-    margin: 0;
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
+    grid-template-columns: 1.3fr 1fr;            /* texto é o protagonista */
     align-items: center;
-    min-height: calc(100vh - 64px);
+    gap: clamp(32px, 4vw, 96px);
+    /* ocupa a tela toda, descontando o header fixo de 80px */
+    min-height: calc(100vh - 80px);  /* fallback p/ navegadores antigos */
+    min-height: calc(100svh - 80px);
+    padding-block: clamp(40px, 4vw, 80px);
+    padding-inline: clamp(40px, 5vw, 120px);
+    /* evita que o conteúdo se espalhe demais em monitores ultrawide */
+    max-width: 2400px;
+    margin-inline: auto;
     background-color: var(--cor-creme);
 }
 
@@ -476,8 +481,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 28px;
-    padding: 60px 64px 60px 80px;
+    gap: clamp(28px, 2vw, 40px);
 }
 
 .home-banner-patrocinios {
@@ -494,20 +498,26 @@ main {
 
 .home-titulo {
     font-family: var(--fonte-display);
-    font-size: 3.8rem;
+    /* acompanha a largura e a altura da tela, o que for menor */
+    font-size: clamp(3.2rem, min(4.4vw, 9vh), 7.5rem);
     font-weight: 900;
     line-height: 1.15;
     color: var(--cor-verde);
     letter-spacing: -0.01em;
-    max-width: 600px;
+    max-width: 11em;
 }
 
 .home-desc {
     font-family: var(--fonte-ui);
-    font-size: 0.95rem;
+    font-size: clamp(0.95rem, 1.05vw, 1.6rem);
     color: var(--cor-texto-leve);
     line-height: 1.7;
-    max-width: 420px;
+    max-width: 36em;
+}
+
+.home-ctas .cta {
+    font-size: clamp(0.82rem, 0.8vw, 1.1rem);
+    padding: clamp(16px, 1.1vw, 22px) clamp(32px, 2.2vw, 48px);
 }
 
 .home-ctas {
@@ -544,7 +554,9 @@ main {
 
 .home-foto-container {
     width: 100%;
-    max-width: 440px;
+    /* cresce com a largura da coluna, mas nunca passa de ~60% da altura útil da tela */
+    max-width: calc((100vh - 80px) * 0.6 * 4 / 3);
+    max-width: calc((100svh - 80px) * 0.6 * 4 / 3);
     aspect-ratio: 4 / 3;
     margin: 0 auto;
     border-radius: var(--radius-lg);
@@ -561,25 +573,21 @@ main {
 
 .home-patrocinadores-grid {
     display: grid;
-    grid-template-columns: 70px 85px 140px; 
-    gap: 20px; 
+    /* logos crescem junto com a tela */
+    grid-template-columns: clamp(70px, 4.8vw, 130px) clamp(85px, 5.8vw, 160px) clamp(140px, 9.5vw, 260px);
+    gap: clamp(20px, 1.6vw, 40px);
     align-items: center;
-    justify-content: start; 
+    justify-content: start;
     width: 100%;
-    max-width: 360px; 
     margin-bottom: 8px;
 }
 
 .home-patrocinador-item {
     width: 100%;
-    max-width: 80px; 
     opacity: 0.85;
     transition: opacity var(--transition), transform var(--transition);
 }
 
-.home-patrocinadores-grid .home-patrocinador-item:nth-child(3) {
-    max-width: 140px; 
-}
 
 .home-patrocinador-item:hover {
     opacity: 1;
@@ -1252,10 +1260,7 @@ main {
 /* 9. RESPONSIVIDADE */
 
 @media (max-width: 1024px) {
-    .home                 { grid-template-columns: 1.2fr 1fr; }
-    .home-esquerda        { padding: 40px; }
-    
-    .home-direita         { padding-right: 40px; }
+    .home                 { grid-template-columns: 1fr 1fr; min-height: auto; padding-block: 64px; }
     .sobre                { padding: 60px 40px; }
     .sobre-conteudo       { gap: 48px; }
     .grandeza             { padding: 80px 40px; }
@@ -1294,6 +1299,8 @@ main {
     .home {
         grid-template-columns: 1fr;
         min-height: auto;
+        padding: 0;
+        gap: 0;
         display: flex;
         flex-direction: column;
     }
@@ -1302,6 +1309,8 @@ main {
         padding: 40px 24px 28px;
         gap: 20px;
         order: 1;
+        align-items: center;   /* centraliza os blocos (título tem max-width) */
+        text-align: center;    /* centraliza as linhas de texto */
     }
 
     .home-ctas {
