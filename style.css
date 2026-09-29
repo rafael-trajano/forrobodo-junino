@@ -88,10 +88,11 @@ section {
     scroll-margin-top: 80px;
 }
 
+/* Títulos de seção: mesmo padrão em todas (igual ao site da Cachaça Forrobodó) */
 section h2 {
     font-family: var(--fonte-display);
-    font-size: 2.6rem;
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 600;
     color: var(--cor-verde);
     line-height: 1.15;
 }
@@ -332,7 +333,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 7px;
     padding: 8px;
     transition: transform 0.2s ease;
 }
@@ -343,10 +344,13 @@ main {
 
 .hamburguer-linha {
     display: block;
-    width: 26px;
+    width: 28px;
     height: 2px;
     background-color: var(--cor-verde);
     border-radius: 2px;
+    /* cada linha vira uma camada própria, que o navegador encaixa em pixels
+       inteiros da tela: as 3 ficam com a mesma espessura em qualquer zoom */
+    will-change: transform;
     transition: var(--transition);
 }
 
@@ -499,7 +503,7 @@ main {
 .home-titulo {
     font-family: var(--fonte-display);
     /* acompanha a largura e a altura da tela, o que for menor */
-    font-size: clamp(3.2rem, min(4.4vw, 9vh), 7.5rem);
+    font-size: clamp(2.6rem, min(4.4vw, 9vh), 7.5rem);
     font-weight: 900;
     line-height: 1.15;
     color: var(--cor-verde);
@@ -624,11 +628,16 @@ main {
     gap: 20px;
 }
 
-.sobre-eyebrow {
+/* Eyebrows (texto pequeno acima do título): mesmo padrão em todas as seções.
+   O seletor .sobre-texto .sobre-eyebrow vence o ".sobre-texto p" abaixo. */
+.sobre-texto .sobre-eyebrow,
+.programacao-eyebrow,
+.localizacao-eyebrow {
     font-family: var(--fonte-ui);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 500;
-    letter-spacing: 0.18em;
+    line-height: 1.6;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--cor-marrom);
 }
@@ -674,17 +683,14 @@ main {
 }
 
 .grandeza-eyebrow {
-    font-family: var(--fonte-display);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--cor-verde);
     margin-bottom: 8px;
 }
 
 .grandeza-sub {
     font-family: var(--fonte-ui);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--cor-texto-leve);
+    line-height: 1.8;
 }
 
 .grandeza-grid {
@@ -762,20 +768,7 @@ main {
     gap: 6px;
 }
 
-.programacao-eyebrow {
-    font-family: var(--fonte-ui);
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--cor-marrom);
-}
-
 .programacao-titulo {
-    font-family: var(--fonte-display);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--cor-verde);
     line-height: 1.2;
 }
 
@@ -875,19 +868,13 @@ main {
 }
 
 .momentos-header {
-    max-width: 1200px;
+    max-width: 1100px;              /* mesma largura da .momentos-grid, para alinhar com as fotos */
     margin: 0 auto 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.momentos-eyebrow {
-    font-family: var(--fonte-display);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--cor-verde);
-}
 
 .momentos-link {
     font-family: var(--fonte-ui);
@@ -974,12 +961,7 @@ main {
 }
 
 .localizacao-eyebrow {
-    font-family: var(--fonte-ui);
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--cor-marrom);
+    display: block;
     margin-bottom: 8px;
 }
 
@@ -1261,6 +1243,7 @@ main {
 
 @media (max-width: 1024px) {
     .home                 { grid-template-columns: 1fr 1fr; min-height: auto; padding-block: 64px; }
+    .home-titulo          { font-size: 2.6rem; }
     .sobre                { padding: 60px 40px; }
     .sobre-conteudo       { gap: 48px; }
     .grandeza             { padding: 80px 40px; }
@@ -1269,7 +1252,6 @@ main {
     .momentos             { padding: 80px 40px; }
     .localizacao          { padding: 80px 40px; }
     .localizacao-conteudo { gap: 48px; }
-    .localizacao-texto h2 { font-size: 2.4rem; }
 
     .nav-social{
         border-top: 1px solid var(--cor-creme-escuro);
@@ -1282,7 +1264,13 @@ main {
         padding: 0 16px;
     }
     section h2 {
-        font-size: 2rem; 
+        font-size: 1.9rem;
+    }
+
+    .sobre-texto .sobre-eyebrow,
+    .programacao-eyebrow,
+    .localizacao-eyebrow {
+        font-size: 0.8rem;
     }
 
     .header-cta {
@@ -1348,7 +1336,7 @@ main {
     }
 
     .home-titulo {
-        font-size: 2.3rem;
+        font-size: 2.4rem;
         margin: 8px 0;
     } 
 
@@ -1375,7 +1363,6 @@ main {
         padding: 0;
         margin-top: 8px; 
         margin-bottom: 16px; 
-        font-size: 2rem;
         line-height: 1.2;
     }
 
