@@ -291,7 +291,7 @@ main {
 }
 
 .footer-logo {
-    width: 170px;
+    width: 120px;
     display: block;
     opacity: 0.9;
     transition: opacity var(--transition);
@@ -521,7 +521,9 @@ main {
     max-width: 36em;
 }
 
-.home-ctas .cta {
+/* mesmo tamanho no botão do home e no "Ver galeria completa" dos Momentos */
+.home-ctas .cta,
+.momentos-cta .cta {
     font-size: clamp(0.82rem, 0.8vw, 1.1rem);
     padding: clamp(16px, 1.1vw, 22px) clamp(32px, 2.2vw, 48px);
 }
@@ -863,6 +865,13 @@ main {
     align-items: center;
 }
 
+
+/* botão "Ver galeria completa", centralizado abaixo das fotos */
+.momentos-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+}
 
 .momentos-link {
     font-family: var(--fonte-ui);
