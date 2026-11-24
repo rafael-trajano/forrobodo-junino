@@ -9,7 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="imagens/imagem-logo.png">
+    <link rel="icon" href="imagens/favicon.ico" sizes="32x32">
+    <link rel="icon" type="image/png" sizes="192x192" href="imagens/favicon-junino.png">
+    <link rel="apple-touch-icon" href="imagens/apple-touch-icon.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="galeria.css">
     <script src="script.js" defer></script>
@@ -63,11 +65,20 @@
 
     <div class="galeria-selector-wrap">
         <div class="galeria-selector-inner">
-            <span class="galeria-selector-label">Selecionar dia</span>
-            <select class="galeria-select" id="galeria-select" aria-label="Selecionar dia da galeria"></select>
+            <span class="galeria-selector-label" id="galeria-label">Selecionar dia</span>
+
+            <!-- seletor de dia (lista própria, para poder estilizar) -->
+            <div class="galeria-dropdown" id="galeria-dropdown">
+                <button type="button" class="galeria-dropdown-botao" id="galeria-dropdown-botao"
+                    aria-haspopup="listbox" aria-expanded="false"
+                    aria-labelledby="galeria-label galeria-dropdown-botao"></button>
+                <ul class="galeria-dropdown-lista" id="galeria-dropdown-lista"
+                    role="listbox" tabindex="-1" aria-labelledby="galeria-label" hidden></ul>
+            </div>
+
             <div class="galeria-nav-btns">
-                <button class="galeria-nav-btn" id="btn-anterior" aria-label="Dia anterior">‹</button>
-                <button class="galeria-nav-btn" id="btn-proximo"  aria-label="Próximo dia">›</button>
+                <button type="button" class="galeria-nav-btn" id="btn-anterior" aria-label="Dia anterior">‹</button>
+                <button type="button" class="galeria-nav-btn" id="btn-proximo" aria-label="Próximo dia">›</button>
             </div>
         </div>
     </div>
@@ -78,8 +89,8 @@
 
 <footer class="footer">
     <div class="footer-logo-wrap">
-        <a href="#home" class="header-logo-link">
-            <img src="imagens/imagem-logo.webp" alt="Forrobodó Junino" class="logo-oficial header-logo">
+        <a href="index.html" class="header-logo-link">
+            <img src="imagens/imagem-logo.webp" alt="Forrobodó Junino" class="logo-oficial footer-logo">
         </a>
     </div>
     <div class="footer-info">

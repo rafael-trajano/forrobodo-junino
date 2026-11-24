@@ -33,17 +33,101 @@
         { id: 'dia17', titulo: 'Dia 11/07', fotos: 14 },
     ];
 
-    var select   = document.getElementById('galeria-select');
     var conteudo = document.getElementById('galeria-conteudo');
     var btnAnt   = document.getElementById('btn-anterior');
     var btnProx  = document.getElementById('btn-proximo');
+    var dropdown = document.getElementById('galeria-dropdown');
+    var botao    = document.getElementById('galeria-dropdown-botao');
+    var lista    = document.getElementById('galeria-dropdown-lista');
     var indice   = 0;
+    var destaque = 0;   // opção marcada pelo teclado enquanto a lista está aberta
 
+    // monta a lista de dias
     DIAS.forEach(function (dia, i) {
-        var opt = document.createElement('option');
-        opt.value = i;
-        opt.textContent = dia.titulo;
-        select.appendChild(opt);
+        var li = document.createElement('li');
+        li.className = 'galeria-dropdown-opcao';
+        li.id = 'galeria-opcao-' + i;
+        li.setAttribute('role', 'option');
+        li.textContent = dia.titulo;
+        li.addEventListener('click', function () { escolher(i); });
+        // o mouse e o teclado usam o mesmo destaque, então só um dia fica marcado por vez
+        li.addEventListener('mousemove', function () { if (destaque !== i) marcar(i, true); });
+        lista.appendChild(li);
+    });
+    var opcoes = lista.querySelectorAll('.galeria-dropdown-opcao');
+
+    function marcar(i, peloMouse) {
+        opcoes[destaque].classList.remove('destacada');
+        destaque = i;
+        opcoes[i].classList.add('destacada');
+        lista.setAttribute('aria-activedescendant', opcoes[i].id);
+        if (peloMouse) return;
+        // mantém a opção visível dentro da lista
+        var o = opcoes[i];
+        if (o.offsetTop < lista.scrollTop) lista.scrollTop = o.offsetTop - 8;
+        else if (o.offsetTop + o.offsetHeight > lista.scrollTop + lista.clientHeight)
+            lista.scrollTop = o.offsetTop + o.offsetHeight - lista.clientHeight + 8;
+    }
+
+    function abrir(peloTeclado) {
+        lista.hidden = false;
+        botao.setAttribute('aria-expanded', 'true');
+        dropdown.classList.add('aberto');
+        // abre já mostrando o dia atual no meio da lista
+        lista.scrollTop = opcoes[indice].offsetTop - lista.clientHeight / 2;
+        // pelo teclado o dia atual já vem destacado; pelo mouse, o destaque só aparece ao passar por cima
+        if (peloTeclado) {
+            marcar(indice);
+        } else {
+            opcoes[destaque].classList.remove('destacada');
+            destaque = indice;
+            lista.setAttribute('aria-activedescendant', opcoes[indice].id);
+        }
+        lista.focus();
+    }
+
+    function fechar(devolverFoco) {
+        if (lista.hidden) return;
+        lista.hidden = true;
+        botao.setAttribute('aria-expanded', 'false');
+        dropdown.classList.remove('aberto');
+        if (devolverFoco) botao.focus();
+    }
+
+    function escolher(i) {
+        fechar(true);
+        if (i !== indice) mostrarPainel(i, true);
+    }
+
+    botao.addEventListener('click', function () {
+        if (lista.hidden) abrir(); else fechar(true);
+    });
+
+    botao.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            abrir(true);
+        }
+    });
+
+    // tirou o mouse da lista: some o destaque
+    lista.addEventListener('mouseleave', function () {
+        opcoes[destaque].classList.remove('destacada');
+    });
+
+    lista.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown')      { e.preventDefault(); marcar(Math.min(destaque + 1, opcoes.length - 1)); }
+        else if (e.key === 'ArrowUp')   { e.preventDefault(); marcar(Math.max(destaque - 1, 0)); }
+        else if (e.key === 'Home')      { e.preventDefault(); marcar(0); }
+        else if (e.key === 'End')       { e.preventDefault(); marcar(opcoes.length - 1); }
+        else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); escolher(destaque); }
+        else if (e.key === 'Escape')    { e.preventDefault(); fechar(true); }
+        else if (e.key === 'Tab')       { fechar(false); }
+    });
+
+    // clicar fora fecha a lista
+    document.addEventListener('click', function (e) {
+        if (!dropdown.contains(e.target)) fechar(false);
     });
 
     function gerarPainel(dia, i) {
@@ -70,26 +154,34 @@
     DIAS.forEach(function (dia, i) { html += gerarPainel(dia, i); });
     conteudo.innerHTML = html;
 
-    function mostrarPainel(i) {
+    function mostrarPainel(i, trocou) {
         document.querySelectorAll('.galeria-painel').forEach(function (p) {
             p.classList.remove('ativo');
         });
         document.getElementById('painel-' + i).classList.add('ativo');
-        select.value     = i;
+
+        // se a pessoa já desceu nas fotos, volta para o começo do novo dia
+        if (trocou) {
+            var barra = document.querySelector('.galeria-selector-wrap').offsetHeight;
+            var topo  = conteudo.getBoundingClientRect().top + window.scrollY - barra - 80;
+            if (window.scrollY > topo) window.scrollTo({ top: topo, behavior: 'smooth' });
+        }
+
+        botao.textContent = DIAS[i].titulo;
+        opcoes.forEach(function (o, j) {
+            o.setAttribute('aria-selected', j === i ? 'true' : 'false');
+        });
         btnAnt.disabled  = i === 0;
         btnProx.disabled = i === DIAS.length - 1;
         indice           = i;
         ativarLightbox();
     }
 
-    select.addEventListener('change', function () {
-        mostrarPainel(parseInt(select.value));
-    });
     btnAnt.addEventListener('click', function () {
-        if (indice > 0) mostrarPainel(indice - 1);
+        if (indice > 0) mostrarPainel(indice - 1, true);
     });
     btnProx.addEventListener('click', function () {
-        if (indice < DIAS.length - 1) mostrarPainel(indice + 1);
+        if (indice < DIAS.length - 1) mostrarPainel(indice + 1, true);
     });
 
     mostrarPainel(0);

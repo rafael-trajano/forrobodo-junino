@@ -36,6 +36,9 @@ ARQUITETURA CSS — FORROBODÓ JUNINO
     --fonte-elegante: 'Cormorant Garamond', Georgia, serif;
     --fonte-ui:       'DM Sans', Arial, sans-serif;
 
+    /* espaço vertical padrão das seções (em cima e embaixo) */
+    --espaco-secao: 72px;
+
     --radius-sm: 6px;
     --radius-md: 12px;
     --radius-lg: 20px;
@@ -94,12 +97,12 @@ section h2 {
     font-size: 2rem;
     font-weight: 600;
     color: var(--cor-verde);
-    line-height: 1.15;
+    line-height: 1.35;
 }
 
-section h2 em {
-    font-style: italic;
-    font-family: var(--fonte-display);
+/* palavra principal do título: vai para a linha de baixo, em marrom */
+.destaque {
+    display: block;
     color: var(--cor-marrom);
 }
 
@@ -288,8 +291,7 @@ main {
 }
 
 .footer-logo {
-    width: 150px;
-    max-height: 75px;
+    width: 170px;
     display: block;
     opacity: 0.9;
     transition: opacity var(--transition);
@@ -608,9 +610,9 @@ main {
 /* Sobre */
 
 .sobre {
-    background-color: var(--cor-creme-escuro);
+    background-color: var(--cor-creme);
     max-width: 100%;
-    padding: 70px 80px;
+    padding: var(--espaco-secao) 80px;
 }
 
 .sobre-conteudo {
@@ -626,20 +628,6 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-/* Eyebrows (texto pequeno acima do título): mesmo padrão em todas as seções.
-   O seletor .sobre-texto .sobre-eyebrow vence o ".sobre-texto p" abaixo. */
-.sobre-texto .sobre-eyebrow,
-.programacao-eyebrow,
-.localizacao-eyebrow {
-    font-family: var(--fonte-ui);
-    font-size: 0.78rem;
-    font-weight: 500;
-    line-height: 1.6;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--cor-marrom);
 }
 
 .sobre-texto h2 {
@@ -673,7 +661,7 @@ main {
 .grandeza {
     background-color: var(--cor-creme);
     max-width: 100%;
-    padding: 100px 80px;
+    padding: var(--espaco-secao) 80px;
 }
 
 .grandeza-header {
@@ -746,9 +734,9 @@ main {
 /* Programação */
 
 .programacao {
-    background-color: var(--cor-creme-escuro);
+    background-color: var(--cor-creme);
     max-width: 100%;
-    padding: 100px 80px;
+    padding: var(--espaco-secao) 80px;
 }
 
 .programacao-header {
@@ -864,7 +852,7 @@ main {
 .momentos {
     background-color: var(--cor-creme);
     max-width: 100%;
-    padding: 80px 80px;
+    padding: var(--espaco-secao) 80px;
 }
 
 .momentos-header {
@@ -943,15 +931,15 @@ main {
 .localizacao {
     background-color: var(--cor-creme);
     max-width: 100%;
-    padding: 100px 80px;
+    padding: var(--espaco-secao) 80px;
 }
 
 .localizacao-conteudo {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.1fr 1.2fr;
-    gap: 80px;
+    grid-template-columns: 1.2fr 1fr;    /* texto um pouco mais largo que o mapa */
+    gap: 56px;
     align-items: center;
 }
 
@@ -960,50 +948,45 @@ main {
     flex-direction: column;
 }
 
-.localizacao-eyebrow {
-    display: block;
-    margin-bottom: 8px;
-}
-
 .localizacao-texto h2 {
-    margin-bottom: 28px;
+    margin-bottom: 12px;
 }
 
-.localizacao-texto p {
+/* só o parágrafo de descrição (antes a regra pegava também os textos de endereço) */
+.localizacao-texto > p {
     font-size: 0.95rem;
     color: var(--cor-texto-leve);
     line-height: 1.8;
-    max-width: 480px;
-    margin-bottom: 36px;
+    margin-bottom: 28px;
 }
 
 .localizacao-detalhes {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    margin-bottom: 40px;
+    gap: 16px;
+    margin-bottom: 32px;
 }
 
 .detalhe-item {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
 }
 
 .detalhe-label {
     font-family: var(--fonte-ui);
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     font-weight: 500;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--cor-marrom);
 }
 
 .detalhe-info {
     font-family: var(--fonte-ui);
-    font-size: 0.9rem;
+    font-size: 1rem;
+    line-height: 1.5;
     color: var(--cor-texto);
-    margin-bottom: 0;
 }
 
 .cta-como-chegar {
@@ -1032,7 +1015,7 @@ main {
 
 .localizacao-mapa-card {
     width: 100%;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 3 / 2;
     background-color: var(--cor-escuro);
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -1082,7 +1065,7 @@ main {
 .parceiros {
     background-color: var(--cor-creme);
     max-width: 100%;
-    padding: 60px 48px;
+    padding: var(--espaco-secao) 48px;
     text-align: center;
 }
 
@@ -1242,15 +1225,16 @@ main {
 /* 9. RESPONSIVIDADE */
 
 @media (max-width: 1024px) {
+    :root                 { --espaco-secao: 64px; }
     .home                 { grid-template-columns: 1fr 1fr; min-height: auto; padding-block: 64px; }
     .home-titulo          { font-size: 2.6rem; }
-    .sobre                { padding: 60px 40px; }
+    .sobre                { padding: var(--espaco-secao) 40px; }
     .sobre-conteudo       { gap: 48px; }
-    .grandeza             { padding: 80px 40px; }
-    .programacao          { padding: 80px 40px; }
+    .grandeza             { padding: var(--espaco-secao) 40px; }
+    .programacao          { padding: var(--espaco-secao) 40px; }
     .programacao-header   { gap: 32px; }
-    .momentos             { padding: 80px 40px; }
-    .localizacao          { padding: 80px 40px; }
+    .momentos             { padding: var(--espaco-secao) 40px; }
+    .localizacao          { padding: var(--espaco-secao) 40px; }
     .localizacao-conteudo { gap: 48px; }
 
     .nav-social{
@@ -1259,18 +1243,16 @@ main {
 }
 
 @media (max-width: 768px) {
+    :root {
+        --espaco-secao: 56px;
+    }
+
     .header {
         height: 80px;
         padding: 0 16px;
     }
     section h2 {
         font-size: 1.9rem;
-    }
-
-    .sobre-texto .sobre-eyebrow,
-    .programacao-eyebrow,
-    .localizacao-eyebrow {
-        font-size: 0.8rem;
     }
 
     .header-cta {
@@ -1357,13 +1339,11 @@ main {
     /* Sobre */
 
     .sobre {
-        padding: 40px 24px;
+        padding: var(--espaco-secao) 24px;
     }
     .sobre h2{
         padding: 0;
-        margin-top: 8px; 
-        margin-bottom: 16px; 
-        line-height: 1.2;
+        margin-bottom: 8px;
     }
 
     .sobre-texto {
@@ -1382,7 +1362,7 @@ main {
     /* Grandeza */
 
     .grandeza {
-        padding: 64px 16px;
+        padding: var(--espaco-secao) 16px;
     }
 
     .grandeza-grid {
@@ -1413,7 +1393,7 @@ main {
     /* Programação */
 
     .programacao {
-        padding: 64px 24px;
+        padding: var(--espaco-secao) 24px;
     }
 
     .programacao-header {
@@ -1449,7 +1429,7 @@ main {
     /* Momentos */
 
     .momentos {
-        padding: 64px 16px;
+        padding: var(--espaco-secao) 16px;
     }
 
     .momentos-header {
@@ -1482,7 +1462,7 @@ main {
     /* Localização */
 
     .localizacao {
-        padding: 64px 24px;
+        padding: var(--espaco-secao) 24px;
     }
 
     .localizacao-conteudo {
@@ -1502,11 +1482,7 @@ main {
         order: 2;
     }
 
-    .localizacao-texto h2 {
-        margin-bottom: 16px;
-    }
-
-    .localizacao-texto p {
+    .localizacao-texto > p {
         margin-bottom: 24px;
     }
 
@@ -1541,7 +1517,7 @@ main {
     }
 
     .parceiros {
-        padding: 48px 24px 64px;
+        padding: var(--espaco-secao) 24px;
     }
 
     .parceiros-banner-wrap {
